@@ -1,4 +1,4 @@
-package br.com.danieleleao.todolist.users;
+package br.com.danieleleao.todolist.task;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -14,19 +14,23 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "tb_users")
-public class UserModel {
+@Table(name = "tb_task")
+public class TaskModel {
 	
 	@Id
 	@GeneratedValue(generator = "UUID")
 	private UUID id;
-
-	@Column(unique = true)
-	private String username;
-	private String name;
-	private String password;
+	private String description;
+	
+	@Column(length = 50)
+	private String title;
+	private LocalDateTime startAt;
+	private LocalDateTime endAt;
+	private String priority;
+	private UUID idUser;
 	
 	@CreationTimestamp
 	private LocalDateTime createdAt;
+	
 
 }
